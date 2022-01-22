@@ -1,0 +1,15 @@
+## NodeJS rules
+*.log
+npm-debug.log*
+node_modules
+*.lock
+
+## Build
+*.map
+
+## IDE rules
+.vscode
+
+## OS metadata rules
+.DS_Store
+Thumbs.db

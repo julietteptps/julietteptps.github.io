@@ -1,0 +1,41 @@
+{
+  "name": "julietteptps.github.io",
+  "version": "1.0.0",
+  "description": "Personal website",
+  "author": "Juliette Petit-Pas",
+  "repository": "git@github.com/julietteptps/julietteptps.github.io.git",
+  "scripts": {
+    "prestart": "npm run build",
+    "start": "run-p watch server",
+    "clean": "rimraf build/{css/*,js/*}",
+    "server": "browser-sync start -c bs-config.js",
+    "build": "npm run clean & run-p build:*",
+    "build:js": "uglifyjs src/js/* -o build/js/scripts.js",
+    "build:css": "postcss src/scss/style.scss -o build/css/style.css --config",
+    "build:assets": "mkdir -p build/assets && cp -R src/assets/* build/assets",
+    "build:templates": "cp -R src/templates/* build",
+    "watch": "run-p watch:*",
+    "watch:js": "onchange 'src/js/' -- npm run build:js",
+    "watch:css": "onchange 'src/scss/' -- npm run build:css",
+    "watch:templates": "onchange 'src/templates/' -- run-p build:templates build:css"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run build"
+    }
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.1.0",
+    "browser-sync": "^2.26.13",
+    "husky": "^4.3.6",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
+    "postcss": "^8.2.1",
+    "postcss-cli": "^8.3.1",
+    "rimraf": "^3.0.2",
+    "uglify-js": "^3.12.3"
+  },
+  "dependencies": {
+    "tailwindcss": "^2.0.2"
+  }
+}
