@@ -2,30 +2,11 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/**
- * Colors
- */
-
-$primary-color: #27509b;
-$dark-color: #0d1117;
-$light-color: #fff;
-
-/**
- * Theme support
- */
-
-:root {
-  --background-color: #{$light-color};
-  --color: #{$dark-color};
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background-color: #{$dark-color};
-    --color: #{$light-color};
-  }
+@font-face {
+  font-family: 'Tiemann';
+  src: url("/assets/fonts/tiemann.ttf") format("truetype");
 }
 
-body {
-  background-color: var(--background-color);
-  color: var(--color);
+.font-tiemann {
+  font-family: 'Tiemann';
 }
